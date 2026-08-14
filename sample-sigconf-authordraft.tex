@@ -31,7 +31,7 @@
 \newcommand{\yesmark}{\textcolor{red}{\ding{51}}}
 \newcommand{\nomark}{\textcolor{black}{\ding{55}}}
 
-\newcommand{\method}{ORION\xspace}
+\newcommand{\method}{STMoE\xspace}
 \newcommand{\genes}{18{,}085}
 \newcommand{\cells}{5{,}000}
 \newcommand{\regA}{A$\rightarrow$A}
@@ -41,7 +41,7 @@
 
 \begin{document}
 
-\title{ORION: Organ-Routed Single-Cell Omics Inference from Histology}
+\title{STMoE: Multi-Scale Mixture-of-Experts for Single-Cell Gene Expression Prediction from Histology}
 
 \author{Xi Li}
 \affiliation{%
@@ -136,7 +136,7 @@ Despite rapid progress, current histology-to-expression methods do not yet provi
 \centering
 \includegraphics[width=0.98\textwidth]{model.png}
 \caption{\method{} framework. During training, \dataset{} provides aligned cell records with local/context H\&E crops and measured expression profiles. A frozen UNI2-h encoder and an expression branch are aligned with a soft contrastive objective. During WSI-only deployment, CellViT++ detects cells, an organ classifier estimates routing weights, and full-gene expression is predicted by organ-routed retrieval from 22 training-only reference banks. Lung, kidney, ovary, tonsil, and breast have the largest banks and most stable evaluated predictions.}
-\Description{Overview of ORION. The training path uses CellST-24M aligned cell records with local and context histology crops and measured expression profiles. The inference path starts from a whole-slide image, detects cells with CellViT++, estimates organ routing weights, extracts image crops, and predicts full-gene expression through organ-routed retrieval.}
+\Description{Overview of STMoE. The training path uses CellST-24M aligned cell records with local and context histology crops and measured expression profiles. The inference path starts from a whole-slide image, detects cells with CellViT++, estimates organ routing weights, extracts image crops, and predicts full-gene expression through organ-routed retrieval.}
 \label{fig:stmoe_architecture}
 \end{figure*}
 
@@ -523,7 +523,7 @@ The organ prediction selects or weights organ-specific reference banks for retri
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.98\textwidth]{main_exp.png}
-\caption{Qualitative single-cell image-to-gene prediction on the matched lung benchmark. Top: in-domain A$\rightarrow$A evaluation. Bottom: cross-patient A$\rightarrow$B evaluation. Left panels compare tissue-level ground-truth and ORION expression maps; right panels show representative H\&E neighborhoods with ground-truth and predicted expression patterns.}
+\caption{Qualitative single-cell image-to-gene prediction on the matched lung benchmark. Top: in-domain A$\rightarrow$A evaluation. Bottom: cross-patient A$\rightarrow$B evaluation. Left panels compare tissue-level ground-truth and STMoE expression maps; right panels show representative H\&E neighborhoods with ground-truth and predicted expression patterns.}
 \label{fig:main_exp}
 \end{figure*}
 
@@ -537,7 +537,7 @@ The organ prediction selects or weights organ-specific reference banks for retri
 \small
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{1.15}
-\caption{Multi-organ strict cell-level comparison against BLEEP~\cite{xie2023bleep}, GHIST~\cite{fu2025ghist}, and sCellST~\cite{chadoutaud2026scellst}. Results are reported on the five organs for which all baselines are available. BL, GH, SC, and OR denote BLEEP, GHIST, sCellST, and \method{}, respectively. Higher is better for all metrics, and bold values indicate the best method for each organ and metric.}
+\caption{Multi-organ strict cell-level comparison against BLEEP~\cite{xie2023bleep}, GHIST~\cite{fu2025ghist}, and sCellST~\cite{chadoutaud2026scellst}. Results are reported on the five organs for which all baselines are available. BL, GH, SC, and ST denote BLEEP, GHIST, sCellST, and \method{}, respectively. Higher is better for all metrics, and bold values indicate the best method for each organ and metric.}
 \label{tab:multi_organ_main}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrrrrrrrrr@{}}
 \toprule
