@@ -1,4 +1,4 @@
-\documentclass[sigconf,review,anonymous]{acmart}
+\documentclass[sigconf]{acmart}
 
 \usepackage{booktabs}
 \usepackage{multirow}
@@ -15,16 +15,17 @@
 
 \AtBeginDocument{\providecommand\BibTeX{{Bib\TeX}}}
 
+% TODO(final): Replace with the exact rightsreview-issued CC license:
+% \setcopyright{cc} followed by \setcctype{by} or \setcctype{by-nc-nd}.
 \setcopyright{none}
 \copyrightyear{2026}
 \acmYear{2026}
+% TODO(final): Replace with the DOI issued by rightsreview.
 \acmDOI{}
-\acmISBN{}
-\copyrightyear{2026}
-\acmConference[CIKM '26]{The 35th International ACM Conference on Knowledge and Information Management}{November 7--11, 2026}{Rome, Italy}
-\acmBooktitle{Proceedings of the 35th International ACM Conference on Knowledge and Information Management (CIKM '26), November 7--11, 2026, Rome, Italy}
-\settopmatter{printacmref=false}
-\renewcommand\footnotetextcopyrightpermission[1]{}
+\acmISBN{979-8-4007-2539-5/2026/11}
+\acmConference[CIKM '26]{Proceedings of the 35th ACM International Conference on Information and Knowledge Management}{November 7--11, 2026}{Rome, Italy.}
+\acmBooktitle{Proceedings of the 35th ACM International Conference on Information and Knowledge Management (CIKM '26),  November 7--11, 2026, Rome, Italy}
+\settopmatter{printacmref=true}
 \newcommand{\dataset}{CellST-24M\xspace}
 \usepackage{pifont}
 \newcommand{\yesmark}{\textcolor{red}{\ding{51}}}
@@ -42,10 +43,52 @@
 
 \title{ORION: Organ-Routed Single-Cell Omics Inference from Histology}
 
-\author{Anonymous Author(s)}
-\affiliation{\institution{Anonymous Institution}}
-\email{anonymous@example.com}
-\renewcommand{\shortauthors}{Anonymous et al.}
+\author{Xi Li}
+\affiliation{%
+  \department{Department of Computer Science}
+  \institution{University of California, Irvine}
+  \city{Irvine}
+  \state{California}
+  \country{USA}}
+\email{xil43@uci.edu}
+
+\author{Yaqi Hu}
+\affiliation{%
+  \department{Department of Computer Science}
+  \institution{University of California, Irvine}
+  \city{Irvine}
+  \state{California}
+  \country{USA}}
+\email{yaqi.hu@uci.edu}
+
+\author{Ziheng Duan}
+\affiliation{%
+  \department{Department of Computer Science}
+  \institution{University of California, Irvine}
+  \city{Irvine}
+  \state{California}
+  \country{USA}}
+\email{zihend1@uci.edu}
+
+\author{Chaoyang Wang}
+\affiliation{%
+  \department{Department of Computer Science}
+  \institution{University of California, Irvine}
+  \city{Irvine}
+  \state{California}
+  \country{USA}}
+\email{chaoyaw2@uci.edu}
+
+\author{Jing Zhang}
+\affiliation{%
+  \department{Department of Computer Science}
+  \institution{University of California, Irvine}
+  \city{Irvine}
+  \state{California}
+  \country{USA}}
+\email{zhang.jing@uci.edu}
+
+\renewcommand{\shortauthors}{Li et al.}
 
 \begin{abstract}
 Predicting single-cell molecular state from routine histology could make spatial profiling more scalable, but existing histology-to-expression methods are mostly limited to spot-level targets, restricted gene panels, or organ-specific settings. This leaves three gaps for practical single-cell deployment: a lack of large aligned-cell resources, limited support for direct multi-organ prediction, and incomplete full-gene expression recovery from whole-slide images. We address these gaps by curating CellST-24M, a 23.94M-cell histology--transcriptomics resource spanning 66 studies, 25 organ categories, Visium HD, and Xenium, and by introducing \method{}, a WSI-only organ-routed prediction framework for full-gene single-cell expression inference. \method{} detects cells from H\&E slides, encodes cell-centered and tissue-context crops with a frozen UNI2-h pathology foundation model, aligns image and expression embeddings with soft contrastive learning, and predicts full-gene profiles through organ-routed retrieval from training-only reference banks. On matched human lung benchmarks, \method{} achieves state-of-the-art cell-level performance, outperforming cell-adapted BLEEP, sCellST and GHIST under both in-domain and cross-patient settings. Across 22 organs, \method{} supports direct multi-organ prediction and achieves gene-wise Pearson up to 0.6451 and cell-wise Pearson up to 0.8379, while retaining approximately 60\% predictive capability under cross-patient transfer. In downstream marker-derived analysis, predicted profiles recover coarse cell-state structure with 0.5935 accuracy and 0.5922 balanced accuracy. Together, CellST-24M and \method{} establish a benchmark and modeling framework for WSI-only, multi-organ, full-gene single-cell histology-to-expression prediction.
@@ -294,7 +337,7 @@ In-domain benchmark for all organs; cross-patient and cross-platform protocols f
 \vspace{2pt}
 {\footnotesize
 \emph{Notes:}
-The anonymous code and dataset release is available at
+The code and dataset release is available at
 \protect\url{https://anonymous.4open.science/r/Orion-2053/}.
 ``Studies'' denotes standardized biological datasets included in the release.
 ``sub.'' and ``rec.'' indicate subset-level and record-level derived artifacts, respectively.
@@ -949,7 +992,7 @@ As shown in Figure~\ref{fig:celltype_consistency}, the resulting coarse assignme
 
 \section{Data and Code Availability}
 
-The anonymous code, dataset manifest, benchmark splits, and reviewer subset are available at
+The code, dataset manifest, benchmark splits, and reviewer subset are available at
 \url{https://anonymous.4open.science/r/Orion-2053/}.
 
 
