@@ -894,10 +894,6 @@ Retained marker-derived classes & Club, AT2, Immune \\
 
 As shown in Figure~\ref{fig:celltype_consistency}, the resulting coarse assignments reach 0.5935 accuracy and 0.5922 balanced accuracy. At the cluster level, all 10 clusters keep the same dominant coarse label between ground-truth-derived and prediction-derived assignments. The strongest agreement appears in a nearly pure Club cluster, cluster 3, with agreement 0.934. Several larger clusters also show robust agreement, including clusters 0, 2, 7, and 9, with agreement values of 0.639, 0.656, 0.550, and 0.670, respectively. The hardest cases are mixed Immune and AT2 clusters, especially clusters 1, 5, and 8, where agreement remains below 0.5 and the predicted composition becomes more diffuse. Table~\ref{tab:celltype_global} summarizes the corresponding global statistics. The moderate cell-level accuracy and balanced accuracy indicate partial recovery of coarse marker-derived states, whereas the lower ARI and NMI show that prediction-derived labels do not fully reproduce the unsupervised cluster structure. These results suggest that \method{} can preserve coarse tissue organization even when fine-grained single-cell expression recovery remains imperfect.
 
-\section{Data and Code Availability}
-
-The STMoE code, dataset manifest, and benchmark splits are publicly available at
-\url{https://github.com/aicb-ZhangLabs/STMoE}.
 
 
 \section{Discussion}
@@ -911,6 +907,14 @@ Several limitations remain. Most importantly, cross-patient prediction is still 
 \section{Conclusion}
 
 We presented \method{}, a WSI-only organ-routed framework for single-cell gene-expression inference from histology. We also curated CellST-24M, an aligned resource pairing histology and transcriptomics for 23.94M cells. \method{} combines cell-centered morphology, tissue context, soft image--expression alignment, and retrieval from training-only reference banks to predict full-gene profiles. Across multi-organ and matched human lung benchmarks, \method{} outperforms representative cell-level baselines and supports downstream coarse cell-state recovery. These results establish CellST-24M and \method{} as a benchmark and modeling framework for leakage-controlled, multi-organ, full-gene single-cell histology-to-expression prediction.
+
+
+\section{Data and Code Availability}
+
+The STMoE code, dataset manifest, and benchmark splits are publicly available at
+\url{https://github.com/aicb-ZhangLabs/STMoE}.
+
+
 
 \begin{acks}
 This work was supported by the National Institutes of Health under Award Numbers R01HG012572, R01NS128523, and R01DA063316.
