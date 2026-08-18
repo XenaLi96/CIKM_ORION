@@ -247,92 +247,9 @@ STimage-1K4M~\cite{chen2024stimage}
 \end{tabularx}
 \end{table}
 
-\dataset{} uses aligned cells as the benchmark unit (Table~\ref{tab:resource_comparison}) and provides platform-specific \texttt{.h5ad} files, fixed split indices, and configurations (Table~\ref{tab:main_release_manifest}). These packages support strict cell-level evaluation beyond spot-, tile-, or image--text-level benchmarks.
+\dataset{} uses aligned cells as the benchmark unit (Table~\ref{tab:resource_comparison}) and provides a manifest, platform-specific \texttt{.h5ad} files, fixed split indices, and benchmark configurations. The release contains 66 standardized studies and 23.94M aligned cells: 42 Xenium studies contribute 16.31M segmented human and mouse cells, while 24 Visium HD studies contribute 7.63M bin-to-cell aligned cells from human, mouse, and other species. These derived packages introduce no additional biological samples and support strict cell-level evaluation beyond spot-, tile-, or image--text-level benchmarks.
 
-\begin{table*}[t]
-\centering
-\footnotesize
-\setlength{\tabcolsep}{3pt}
-\renewcommand{\arraystretch}{1.12}
-\caption{\textbf{\dataset{} release manifest and benchmark coverage.}
-The benchmark package is a derived artifact and does not introduce additional biological samples.}
-\label{tab:main_release_manifest}
-\begin{tabularx}{\textwidth}{
->{\raggedright\arraybackslash}p{1.55cm}
->{\raggedright\arraybackslash}p{1.45cm}
->{\raggedright\arraybackslash}p{1.35cm}
->{\centering\arraybackslash}p{0.75cm}
->{\raggedleft\arraybackslash}p{0.90cm}
->{\raggedright\arraybackslash}p{1.45cm}
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}p{1.55cm}
-}
-\toprule
-\textbf{Block} &
-\textbf{Platform} &
-\textbf{Species} &
-\textbf{Studies} &
-\textbf{Cells} &
-\textbf{Cell unit} &
-\textbf{Benchmark coverage} &
-\textbf{Files} \\
-\midrule
-
-Full release &
-Xenium + Visium HD &
-human, mouse, other &
-66 &
-23.94M &
-Aligned cell &
-In-domain, cross-patient, cross-platform, and context-shift evaluation &
-\texttt{manifest/} \\
-
-\addlinespace[1pt]
-
-Xenium &
-Xenium &
-human, mouse &
-42 &
-16.31M &
-Segmented cell &
-In-domain and cross-platform single-cell evaluation &
-\makecell[l]{\texttt{xenium/}\\\texttt{*.h5ad}} \\
-
-Visium HD &
-Visium HD &
-human, mouse, other &
-24 &
-7.63M &
-Bin-to-cell aligned &
-In-domain, cross-patient, and cross-platform evaluation &
-\makecell[l]{\texttt{visium\_hd/}\\\texttt{*.h5ad}} \\
-
-\midrule
-
-\rowcolor{gray!8}
-Benchmark package &
-Mixed &
-mixed &
--- &
-fixed &
-Split-indexed &
-In-domain benchmark for all organs; cross-patient and cross-platform protocols for eight organs &
-\makecell[l]{\texttt{splits/}\\\texttt{configs/}} \\
-
-\bottomrule
-\end{tabularx}
-
-\vspace{2pt}
-{\footnotesize
-\emph{Notes:}
-The code and dataset release is available at
-\protect\url{https://anonymous.4open.science/r/Orion-2053/}.
-``Studies'' denotes standardized biological datasets included in the release.
-Cross-patient and cross-platform benchmarks are defined for eight multi-sample organs:
-human breast, human ovary, human lung, human pancreas, human tonsil, mouse brain,
-mouse embryo, and mouse kidney. All remaining organs are used for in-domain benchmarks.
-\par}
-\end{table*}
+The split-indexed benchmark package supports in-domain evaluation across all organs, together with cross-patient and cross-platform protocols for eight multi-sample organs: human breast, ovary, lung, pancreas, and tonsil, and mouse brain, embryo, and kidney. It also includes context-shift evaluation configurations, with all remaining organs used for in-domain benchmarks.
 
 \dataset{} combines two complementary spatial-omics assay families. Xenium provides native cell-level measurements through platform-defined cell boundaries and transcript coordinates. Visium HD provides dense spatial expression bins and whole-slide histology; we convert these bins into cell-level targets by registering molecular coordinates to the histology frame, segmenting candidate cell footprints, aggregating overlapping bins to cells, and filtering records without stable expression support or valid image context. This curation step yields a common cell-aligned interface across assays: each retained cell has local morphology, neighborhood context, spatial coordinates, metadata, and an expression vector.
 
@@ -979,8 +896,8 @@ As shown in Figure~\ref{fig:celltype_consistency}, the resulting coarse assignme
 
 \section{Data and Code Availability}
 
-The code, dataset manifest, and benchmark splits are available at
-\url{https://anonymous.4open.science/r/Orion-2053/}.
+The STMoE code, dataset manifest, and benchmark splits are publicly available at
+\url{https://github.com/aicb-ZhangLabs/STMoE}.
 
 
 \section{Discussion}
